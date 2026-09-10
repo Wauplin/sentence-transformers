@@ -4,7 +4,6 @@ import logging
 from pathlib import Path
 from unittest.mock import MagicMock
 
-import httpx
 import pytest
 from huggingface_hub.utils import (
     EntryNotFoundError,
@@ -13,6 +12,7 @@ from huggingface_hub.utils import (
     LocalEntryNotFoundError,
     RepositoryNotFoundError,
     RevisionNotFoundError,
+    httpx,
 )
 
 from sentence_transformers.util.file_io import (

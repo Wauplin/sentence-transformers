@@ -11,6 +11,7 @@ from huggingface_hub.utils import (
     LocalEntryNotFoundError,
     RepositoryNotFoundError,
     RevisionNotFoundError,
+    httpx,
 )
 from tqdm.autonotebook import tqdm
 
@@ -304,18 +305,12 @@ def http_get(url: str, path: str) -> None:
         path (str): Destination file path on the local filesystem.
 
     Raises:
-        ImportError: If the optional ``httpx`` dependency is not installed.
         httpx.HTTPStatusError: If the HTTP request returns a non-success status code.
         OSError: If the file cannot be written to ``path``.
 
     Returns:
         None
     """
-    try:
-        import httpx
-    except ImportError:
-        raise ImportError("httpx is required to use this function. Please install it via `pip install httpx`.")
-
     if os.path.dirname(path) != "":
         os.makedirs(os.path.dirname(path), exist_ok=True)
 
