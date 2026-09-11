@@ -11,9 +11,15 @@ from huggingface_hub.utils import (
     LocalEntryNotFoundError,
     RepositoryNotFoundError,
     RevisionNotFoundError,
-    httpx,
 )
 from tqdm.autonotebook import tqdm
+
+# hf_hub v1.31.0+ exports its HTTP library as httpx, allowing a switch to httpx2.
+# Older versions depend on httpx directly, so we can import it safely as a fallback.
+try:
+    from huggingface_hub.utils import httpx
+except ImportError:
+    import httpx
 
 try:
     from huggingface_hub import resolve_revision as _hub_resolve_revision

@@ -12,13 +12,13 @@ from huggingface_hub.utils import (
     LocalEntryNotFoundError,
     RepositoryNotFoundError,
     RevisionNotFoundError,
-    httpx,
 )
 
 from sentence_transformers.util.file_io import (
     IncompleteSnapshotError,
     RevisionResolutionError,
     _resolve_model_revision,
+    httpx,
     load_dir_path,
     load_file_path,
 )
